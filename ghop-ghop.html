@@ -49,41 +49,36 @@
     }
 
     #insultBox {
-      font-size: 3em; /* Larger font size for insults */
+      font-size: 3em;
       font-weight: bold;
       color: red;
       margin-top: 20px;
       opacity: 0;
       transition: opacity 0.5s ease-in-out;
-      animation: bounce 0.5s ease-out forwards; /* Only bouncing effect */
+      animation: bounce 0.5s ease-out forwards;
     }
 
-    /* Animation to make the insult box bounce */
     @keyframes bounce {
       0% { transform: scale(1); }
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
 
-    /* Animation for text wiggle (to add shake effect) */
     @keyframes wiggle {
       0%, 100% { transform: rotate(-3deg); }
       50% { transform: rotate(3deg); }
     }
-
   </style>
 </head>
 <body>
 
   <div id="main">
-    <h1>🚨 Tap anywhere to begin! 🚨</h1>
+    <h1>🚨 Double Tap anywhere to begin! 🚨</h1>
     <p>🎧 Increase your volume for better experience!</p>
     <div id="startMsg">👆 Tap the screen to start the madness!</div>
   </div>
 
-  <div class="footer">
-    Created by Aryan Singh
-  </div>
+  <div class="footer">Created by Aryan Singh</div>
 
   <audio id="funnySound" src="audio.mp3" preload="auto" loop></audio>
 
@@ -130,13 +125,13 @@
         setTimeout(() => {
           insultBox.textContent = insults[index];
           insultBox.style.opacity = 1;
-          insultBox.style.animation = 'bounce 0.5s ease-out forwards'; // Only bounce animation
+          insultBox.style.animation = 'bounce 0.5s ease-out forwards';
           index = (index + 1) % insults.length;
         }, 500);
       }
 
-      showNextInsult(); // show first immediately
-      setInterval(showNextInsult, 5000); // change every 5 seconds (instead of 3 seconds)
+      showNextInsult();
+      setInterval(showNextInsult, 5000);
     }
 
     function enableListeners() {
@@ -160,7 +155,6 @@
         }, true);
       }
 
-      // Mouse movement
       let lastMouseX = null, lastMouseY = null;
       document.addEventListener("mousemove", (e) => {
         if (lastMouseX !== null && lastMouseY !== null) {
@@ -174,7 +168,6 @@
         lastMouseY = e.clientY;
       });
 
-      // Click/touch fallback
       document.addEventListener("click", triggerAction);
       document.addEventListener("touchstart", triggerAction);
     }
